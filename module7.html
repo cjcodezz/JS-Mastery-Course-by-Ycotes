@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Module 7: ES6+ Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
+    .card { background:white; padding:20px; border-radius:8px; max-width:800px; margin:0 auto; box-shadow:0 4px 12px rgba(0,0,0,0.08);} 
+    h1 { color:#b67f00 }
+    button { padding:8px 12px; margin:6px 0; cursor:pointer; }
+    input { padding:8px; width:100%; box-sizing:border-box; margin-bottom:8px }
+    #output { margin-top:12px; padding:10px; background:#fbfbfb; border:1px solid #eee; min-height:60px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Module 7: ES6+ Features</h1>
+    <p>Simple interactive examples for Promises, async/await, modules, optional chaining, and default parameters.</p>
+
+    <h3>Promises</h3>
+    <button id="btnPromise">Run Promise example</button>
+
+    <h3>Async / Await</h3>
+    <button id="btnAsync">Run async/await example (uses fakeFetch)</button>
+
+    <h3>Optional chaining & Nullish coalescing</h3>
+    <button id="btnOptional">Run optional chaining example</button>
+
+    <h3>Default parameters</h3>
+    <input id="greetName" placeholder="Type a name (or leave blank)" />
+    <button id="btnGreet">Greet</button>
+
+    <h3>Modules</h3>
+    <button id="btnModule">Use module function (multiply)</button>
+
+    <h3>Output</h3>
+    <div id="output"></div>
+
+    <p style="margin-top:12px; font-size:0.9em; color:#666">Open the browser console to also see logs. This page loads <code>module7.js</code> as a JavaScript module and imports helpers from <code>utils.mjs</code>.</p>
+  </div>
+
+  <script type="module" src="module7.js"></script>
+</body>
+</html>
