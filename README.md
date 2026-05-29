@@ -64,6 +64,26 @@ This course is built to teach JavaScript with clear explanations and practical e
   - Optional chaining
   - Default parameters
 
+- **Module 8:** APIs and Async JavaScript
+  - Fetch API
+  - REST API calls
+  - JSON handling
+  - Error handling with async/await
+
+- **Module 9:** Object-Oriented Programming
+  - Classes and objects
+  - Inheritance
+  - Polymorphism
+  - Encapsulation
+  - Prototype chain
+
+- **Module 10:** JavaScript Projects
+  - Calculator app
+  - To-do app
+  - Quiz app
+  - Weather app
+  - Portfolio interactions
+
 ## What you will learn
 
 - `var`, `let`, `const`
@@ -85,8 +105,15 @@ Open these demo files in your browser to see the course in action:
 - `module3.html`
 - `module6.html`
 - `module7.html`
+- `module8.html`
+- `module9.html`
+- `module10/calculator.html`
+- `module10/todo.html`
+- `module10/quiz.html`
+- `module10/weather.html`
+- `module10/portfolio.html`
 
-> Tip: `module7.html` loads JavaScript modules, so if it does not open directly, use a local server or a browser that supports module imports.
+> Tip: `module7.html`, `module8.html`, `module9.html`, and the `module10` demo pages load JavaScript modules, so if they do not open directly, use a local server or a browser that supports module imports.
 
 ## Latest course and module updates
 This course is updated regularly with the latest JavaScript content. For the most recent modules, extra lessons, and up-to-date course materials, visit:
