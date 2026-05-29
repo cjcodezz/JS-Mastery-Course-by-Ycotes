@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Module 10: To-Do App</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
+    .card { background:white; padding:20px; border-radius:8px; max-width:700px; margin:0 auto; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+    input, button { width:100%; padding:10px; margin:8px 0; border-radius:5px; border:1px solid #ddd; box-sizing:border-box; }
+    button { background:#b67f00; color:white; border:none; cursor:pointer; }
+    button:hover { background:#976100; }
+    ul { list-style:none; padding:0; }
+    li { background:#fafafa; border:1px solid #ececec; padding:10px; margin:6px 0; border-radius:5px; display:flex; justify-content:space-between; align-items:center; }
+    .completed { text-decoration: line-through; color:#888; }
+    .todo-actions button { margin-left:8px; width:auto; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>To-Do App</h1>
+    <p>Add tasks, toggle completion, and remove items using the to-do module.</p>
+
+    <input id="todoText" type="text" placeholder="Enter a new task" />
+    <button id="btnAddTodo">Add To-Do</button>
+
+    <h3>To-Do List</h3>
+    <ul id="todoList"></ul>
+
+    <p style="margin-top:14px; font-size:0.9em; color:#666">This page imports <code>todo.js</code> as a module.</p>
+  </div>
+
+  <script type="module">
+    import { addTodo, toggleTodo, removeTodo, listTodos } from './todo.js';
+
+    const todoText = document.querySelector('#todoText');
+    const todoList = document.querySelector('#todoList');
+    const addButton = document.querySelector('#btnAddTodo');
+
+    function renderTodos() {
+      todoList.innerHTML = '';
+      listTodos().forEach((todo) => {
+        const li = document.createElement('li');
+        li.className = todo.completed ? 'completed' : '';
+        li.textContent = todo.text;
+
+        const actions = document.createElement('div');
+        actions.className = 'todo-actions';n
+        const toggleBtn = document.createElement('button');
+        toggleBtn.textContent = todo.completed ? 'Undo' : 'Complete';
+        toggleBtn.addEventListener('click', () => {
+          try {
+            toggleTodo(todo.id);
+            renderTodos();
+          } catch (error) {
+            console.error(error);
+          }
+        });
+
+        const removeBtn = document.createElement('button');
+        removeBtn.textContent = 'Remove';
+        removeBtn.addEventListener('click', () => {
+          try {
+            removeTodo(todo.id);
+            renderTodos();
+          } catch (error) {
+            console.error(error);
+          }
+        });
+
+        actions.appendChild(toggleBtn);
+        actions.appendChild(removeBtn);
+        li.appendChild(actions);
+        todoList.appendChild(li);
+      });
+    }
+
+    addButton.addEventListener('click', () => {
+      const text = todoText.value;
+      try {
+        addTodo(text);
+        todoText.value = '';
+        renderTodos();
+      } catch (error) {
+        alert(error.message);
+      }
+    });
+
+    renderTodos();
+  </script>
+</body>
+</html>

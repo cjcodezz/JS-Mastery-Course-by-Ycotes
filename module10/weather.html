@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Module 10: Weather App</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
+    .card { background:white; padding:20px; border-radius:8px; max-width:700px; margin:0 auto; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+    input, button { width:100%; padding:10px; margin:8px 0; border-radius:5px; border:1px solid #ddd; box-sizing:border-box; }
+    button { background:#b67f00; color:white; border:none; cursor:pointer; }
+    button:hover { background:#976100; }
+    #output { margin-top:12px; padding:10px; background:#fbfbfb; border:1px solid #eee; min-height:50px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Weather App</h1>
+    <p>Enter a city name to see a simulated weather response.</p>
+
+    <input id="cityInput" type="text" placeholder="Enter city name" />
+    <button id="btnFetchWeather">Get Weather</button>
+
+    <div id="output"></div>
+
+    <p style="margin-top:14px; font-size:0.9em; color:#666">This page imports <code>weather.js</code> as a module.</p>
+  </div>
+
+  <script type="module">
+    import { fetchWeather, formatWeather } from './weather.js';
+
+    const cityInput = document.querySelector('#cityInput');
+    const output = document.querySelector('#output');
+    const button = document.querySelector('#btnFetchWeather');
+
+    button.addEventListener('click', async () => {
+      const city = cityInput.value.trim();
+      if (!city) {
+        output.textContent = 'Please enter a city name.';
+        return;
+      }
+      output.textContent = 'Loading weather...';
+      try {
+        const weather = await fetchWeather(city);
+        output.textContent = formatWeather(weather);
+      } catch (error) {
+        output.textContent = 'Error: ' + error.message;
+      }
+    });
+  </script>
+</body>
+</html>

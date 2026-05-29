@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Module 9: Object-Oriented Programming</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
+    .card { background:white; padding:20px; border-radius:8px; max-width:800px; margin:0 auto; box-shadow:0 4px 12px rgba(0,0,0,0.08);} 
+    h1 { color:#b67f00 }
+    button { padding:10px 14px; margin:6px 0; cursor:pointer; border:none; border-radius:5px; background:#b67f00; color:white; }
+    button:hover { background:#976100; }
+    #output { margin-top:12px; padding:10px; background:#fbfbfb; border:1px solid #eee; min-height:90px; }
+    code { background:#f1f1f1; padding:2px 4px; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Module 9: Object-Oriented Programming</h1>
+    <p>Run these examples to explore classes, inheritance, polymorphism, encapsulation, and prototypes.</p>
+
+    <h3>Classes and objects</h3>
+    <button id="btnObjectExample">Run object example</button>
+
+    <h3>Inheritance</h3>
+    <button id="btnInheritanceExample">Run inheritance example</button>
+
+    <h3>Polymorphism</h3>
+    <button id="btnPolymorphismExample">Run polymorphism example</button>
+
+    <h3>Encapsulation</h3>
+    <button id="btnEncapsulationExample">Run encapsulation example</button>
+
+    <h3>Prototype chain</h3>
+    <button id="btnPrototypeChainExample">Run prototype chain example</button>
+
+    <h3>Output</h3>
+    <div id="output"></div>
+
+    <p style="margin-top:12px; font-size:0.9em; color:#666">Open the browser console to see additional logs. This page loads <code>module9.js</code>.</p>
+  </div>
+
+  <script src="module9.js"></script>
+  <script>
+    const btnObjectExample = document.querySelector('#btnObjectExample');
+    const btnInheritanceExample = document.querySelector('#btnInheritanceExample');
+    const btnPolymorphismExample = document.querySelector('#btnPolymorphismExample');
+    const btnEncapsulationExample = document.querySelector('#btnEncapsulationExample');
+    const btnPrototypeChainExample = document.querySelector('#btnPrototypeChainExample');
+
+    if (btnObjectExample) btnObjectExample.addEventListener('click', () => module9.objectExample());
+    if (btnInheritanceExample) btnInheritanceExample.addEventListener('click', () => module9.inheritanceExample());
+    if (btnPolymorphismExample) btnPolymorphismExample.addEventListener('click', () => module9.polymorphismExample());
+    if (btnEncapsulationExample) btnEncapsulationExample.addEventListener('click', () => module9.encapsulationExample());
+    if (btnPrototypeChainExample) btnPrototypeChainExample.addEventListener('click', () => module9.prototypeChainExample());
+  </script>
+</body>
+</html>

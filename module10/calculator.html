@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Module 10: Calculator App</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
+    .card { background:white; padding:20px; border-radius:8px; max-width:600px; margin:0 auto; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+    button { padding:10px 14px; margin:8px 0; border:none; border-radius:5px; background:#b67f00; color:white; cursor:pointer; }
+    button:hover { background:#976100; }
+    input { width:100%; padding:10px; margin:8px 0; border:1px solid #ddd; border-radius:5px; box-sizing:border-box; }
+    #output { margin-top:12px; padding:10px; background:#fbfbfb; border:1px solid #eee; min-height:50px; }
+    code { background:#f1f1f1; padding:2px 4px; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Calculator App</h1>
+    <p>Enter a simple expression to evaluate using the calculator module.</p>
+
+    <input id="expression" type="text" placeholder="Example: 12 + 5" />
+    <button id="btnCalculate">Calculate</button>
+
+    <h3>Result</h3>
+    <div id="output"></div>
+
+    <p style="margin-top:14px; font-size:0.9em; color:#666">This page imports <code>calculator.js</code> as a module.</p>
+  </div>
+
+  <script type="module">
+    import { calculate } from './calculator.js';
+
+    const expressionInput = document.querySelector('#expression');
+    const output = document.querySelector('#output');
+    const button = document.querySelector('#btnCalculate');
+
+    function renderMessage(message) {
+      output.textContent = message;
+    }
+
+    button.addEventListener('click', () => {
+      const expression = expressionInput.value.trim();
+      if (!expression) {
+        renderMessage('Please enter an expression.');
+        return;
+      }
+      try {
+        const result = calculate(expression);
+        renderMessage(`Result: ${result}`);
+      } catch (error) {
+        renderMessage('Error: ' + error.message);
+      }
+    });
+  </script>
+</body>
+</html>

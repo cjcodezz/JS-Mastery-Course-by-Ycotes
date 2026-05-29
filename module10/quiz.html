@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Module 10: Quiz App</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
+    .card { background:white; padding:20px; border-radius:8px; max-width:700px; margin:0 auto; box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+    button, select { width:100%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #ddd; box-sizing:border-box; }
+    button { background:#b67f00; color:white; border:none; cursor:pointer; }
+    button:hover { background:#976100; }
+    #result { margin-top:10px; padding:10px; background:#fbfbfb; border:1px solid #eee; min-height:40px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Quiz App</h1>
+    <p>Answer the current question and check your score.</p>
+
+    <div id="questionArea">
+      <h3 id="questionText"></h3>
+      <select id="choiceSelect"></select>
+      <button id="btnCheckAnswer">Check Answer</button>
+      <button id="btnNextQuestion">Next Question</button>
+    </div>
+
+    <div id="result"></div>
+
+    <p style="margin-top:14px; font-size:0.9em; color:#666">This page imports <code>quiz.js</code> as a module.</p>
+  </div>
+
+  <script type="module">
+    import { questions, checkAnswer, getQuestion } from './quiz.js';
+
+    const questionText = document.querySelector('#questionText');
+    const choiceSelect = document.querySelector('#choiceSelect');
+    const result = document.querySelector('#result');
+    const btnCheck = document.querySelector('#btnCheckAnswer');
+    const btnNext = document.querySelector('#btnNextQuestion');
+
+    let currentIndex = 0;
+
+    function renderQuestion() {
+      const current = getQuestion(currentIndex);
+      questionText.textContent = current.question;
+      choiceSelect.innerHTML = '';
+      current.choices.forEach((choice) => {
+        const option = document.createElement('option');
+        option.value = choice;
+        option.textContent = choice;
+        choiceSelect.appendChild(option);
+      });
+      result.textContent = '';
+    }
+
+    btnCheck.addEventListener('click', () => {
+      const selected = choiceSelect.value;
+      const correct = checkAnswer(currentIndex, selected);
+      result.textContent = correct ? 'Correct! ✅' : 'Wrong. ❌';
+    });
+
+    btnNext.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % questions.length;
+      renderQuestion();
+    });
+
+    renderQuestion();
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Module 8: APIs and Async JavaScript</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; margin:20px; }
+    .card { background:white; padding:20px; border-radius:8px; max-width:800px; margin:0 auto; box-shadow:0 4px 12px rgba(0,0,0,0.08);} 
+    h1 { color:#b67f00 }
+    button { padding:10px 14px; margin:6px 0; cursor:pointer; border:none; border-radius:5px; background:#b67f00; color:white; }
+    button:hover { background:#976100; }
+    #output { margin-top:12px; padding:10px; background:#fbfbfb; border:1px solid #eee; min-height:90px; }
+    code { background:#f1f1f1; padding:2px 4px; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Module 8: APIs and Async JavaScript</h1>
+    <p>Use the buttons below to run Fetch API and async/await examples directly in the browser.</p>
+
+    <h3>Fetch API</h3>
+    <button id="btnFetchUsers">Load users (GET)</button>
+
+    <h3>POST request</h3>
+    <button id="btnCreatePost">Create new post (POST)</button>
+
+    <h3>Error handling</h3>
+    <button id="btnFetchError">Fetch nonexistent resource</button>
+
+    <h3>JSON handling</h3>
+    <button id="btnJsonExample">Show JSON stringify/parse</button>
+
+    <h3>Output</h3>
+    <div id="output"></div>
+
+    <p style="margin-top:12px; font-size:0.9em; color:#666">Open the browser console to see additional logs. This page loads <code>module8.js</code>.</p>
+  </div>
+
+  <script src="module8.js"></script>
+  <script>
+    const btnFetchUsers = document.querySelector('#btnFetchUsers');
+    const btnCreatePost = document.querySelector('#btnCreatePost');
+    const btnFetchError = document.querySelector('#btnFetchError');
+    const btnJsonExample = document.querySelector('#btnJsonExample');
+
+    if (btnFetchUsers) btnFetchUsers.addEventListener('click', () => module8.fetchUsersExample());
+    if (btnCreatePost) btnCreatePost.addEventListener('click', () => module8.createPostExample());
+    if (btnFetchError) btnFetchError.addEventListener('click', () => module8.fetchWithErrorExample());
+    if (btnJsonExample) btnJsonExample.addEventListener('click', () => module8.jsonExample());
+  </script>
+</body>
+</html>
